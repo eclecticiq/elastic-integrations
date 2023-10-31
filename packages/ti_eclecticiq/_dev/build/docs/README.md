@@ -1,57 +1,84 @@
-<!-- Use this template language as a starting point, replacing {placeholder text} with details about the integration. -->
-<!-- Find more detailed documentation guidelines in https://github.com/elastic/integrations/blob/main/docs/documentation_guidelines.md -->
-
 # EclecticIQ Outgoing Feeds Integration
 
-<!-- The EclecticIQ Outgoing Feeds Integration integration allows you to monitor {name of service}. {name of service} is {describe service}.
+The EclecticIQ Outgoing Feeds integration
+allows you to ingest threat intelligence
+[observables](https://docs.eclecticiq.com/ic/current/work-with-intelligence/observables/)
+from an outgoing feeds on your
+[EclecticIQ Intelligence Center](https://docs.eclecticiq.com/ic/current/)
+instance.
 
-Use the EclecticIQ Outgoing Feeds Integration integration to {purpose}. Then visualize that data in Kibana, create alerts to notify you if something goes wrong, and reference {data stream type} when troubleshooting an issue.
-
-For example, if you wanted to {sample use case} you could {action}. Then you can {visualize|alert|troubleshoot} by {action}. -->
+Observables ingested from an EclecticIQ Intelligence Center outgoing feed
+can be monitored and explored on
+[Intelligence → Indicators](https://www.elastic.co/guide/en/security/current/indicators-of-compromise.html)
+in Kibana.
 
 ## Data streams
 
-<!-- The EclecticIQ Outgoing Feeds Integration integration collects {one|two} type{s} of data streams: {logs and/or metrics}. -->
+The EclecticIQ Outgoing Feeds integration
+collects one type of data streams: logs.
 
-<!-- If applicable -->
-<!-- **Logs** help you keep a record of events happening in {service}.
-Log data streams collected by the {name} integration include {sample data stream(s)} and more. See more details in the [Logs](#logs-reference). -->
+**Logs** collected from this integration
+are collections of threat intelligence observables
+ingested from the connected EclecticIQ Intelligence Center outgoing feed.
 
-<!-- If applicable -->
-<!-- **Metrics** give you insight into the state of {service}.
-Metric data streams collected by the {name} integration include {sample data stream(s)} and more. See more details in the [Metrics](#metrics-reference). -->
+Log data streams collected by the {name} integration include {sample data stream(s)} and more. See more details in the [Logs](#logs-reference).
 
-<!-- Optional: Any additional notes on data streams -->
 
 ## Requirements
 
 You need Elasticsearch for storing and searching your data and Kibana for visualizing and managing it.
 You can use our hosted Elasticsearch Service on Elastic Cloud, which is recommended, or self-manage the Elastic Stack on your own hardware.
 
-<!--
-	Optional: Other requirements including:
-	* System compatibility
-	* Supported versions of third-party products
-	* Permissions needed
-	* Anything else that could block a user from successfully using the integration
--->
+You must also set up your EclecticIQ Intelligence Center
+for Elasticsearch to connect to it. See [Set up EclecticIQ Intelligence Center](#set-up-eclecticiq-intelligence-center).
+
 
 ## Setup
-
-<!-- Any prerequisite instructions -->
 
 For step-by-step instructions on how to set up an integration, see the
 [Getting started](https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-observability.html) guide.
 
-<!-- Additional set up instructions -->
 
-<!-- If applicable -->
-<!-- ## Logs reference -->
+### Set up EclecticIQ Intelligence Center
 
-<!-- Repeat for each data stream of the current type -->
-<!-- ### {Data stream name}
+Before using the integration, you must:
 
-The `{data stream name}` data stream provides events from {source} of the following types: {list types}. -->
+- Set up outgoing feeds on EclecticIQ Intelligence Center.
+- Connect the integration to the EclectiCIQ Intelligence Center instance.
+
+### Set up outgoing feeds on EclecticIQ Intelligence Center
+
+Set up an outgoing feed on EclecticIQ Intelligence Center:
+[Create and configure outgoing feeds](https://docs.eclecticiq.com/ic/current/integrations/extensions/outgoing-feeds/configure-outgoing-feeds-general-options/).
+
+These outgoing feeds must have these properties:
+
+- **Transport type:** _HTTP download_
+- **Content type:** _EclecticIQ Observables CSV_
+- **Update strategy:** _Diff_ or _Replace_.
+  - **(Recommended)** _Diff_ allows you to update data fetched
+    into Cortex XSOAR incrementally.
+  - _Replace_ removes all observable previously
+    ingested from the outgoing feeds, and ingests all data
+    provided by the feed, each time the feed is updated.
+    Do not use with large feeds.
+- **Authorized groups:**
+  Must set one or more groups. Feed must be authenticated.
+  See [EclecticIQ Intelligence Center permissions](https://docs.eclecticiq.com/ic/current/get-to-know-the-ic/permissions/ic-permissions/).
+
+
+Only observables packed by this outgoing feed are fetched.
+
+> To find the ID of an EclecticIQ Intelligence Center outgoing feed:
+> 
+> 1.  Log in to EclecticIQ Intelligence Center.
+> 1.  Navigate to **Data configuration > Outgoing feeds**.
+> 1.  Select an outgoing feed to open it.
+> 1.  Inspect the address bar of your browser.
+> 1.  The ID of this outgoing feed is the value of the `?detail=`
+    query parameter.
+>
+>    For example: For an outgoing feed that displays `https://ic-playground.eclecticiq.com/main/configuration/outgoing-feeds?detail=6 `in the address bar, its ID is `6.`
 
 #### Example
 
