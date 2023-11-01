@@ -1,10 +1,10 @@
 {
     "expected": [
         {
-            "@timestamp": "2023-06-20T18:06:08.590Z",
+            "@timestamp": "2023-06-20T18:06:08.000Z",
             "eclecticiq": {
                 "outgoing_feed": {
-                    "deleted_at": "2023-06-20T18:06:08.590Z",
+                    "deleted_at": "2023-06-20T18:06:08.000Z",
                     "observable_id": "tzbykLYthzQx1ML8EkT7sv3I1wI="
                 }
             },
@@ -15,12 +15,12 @@
                 "category": [
                     "threat"
                 ],
-                "created": "2023-06-08T12:00:30.028Z",
-                "id": "iw0npK1UOuXzE57AIaqeFd8DymI=",
+                "created": "2023-06-08T12:00:30.000Z",
+                "id": "pZ8I9N6ofHSYlJgguicXSJntJbk=",
                 "kind": "enrichment",
-                "original": "{\"calculated.relevancy\": \"0.12\", \"calculated.source_reliability\": \"A\", \"calculated.tlp\": \"WHITE\", \"diff\": \"del\", \"entity.id\": \"d983be9e-307c-4bdb-8bda-c3238fb22c6d\", \"entity.title\": \"CVE-2021-45105\", \"entity.type\": \"exploit-target\", \"meta.classification\": \"\", \"meta.confidence\": \"\", \"meta.entity_url\": \"https://test.com/entity/d983be9e-307c-4bdb-8bda-c3238fb22c6d\", \"meta.estimated_observed_time\": \"2021-12-19T00:27:19.108045+00:00\", \"meta.estimated_threat_end_time\": \"\", \"meta.estimated_threat_start_time\": \"2021-12-19T00:27:19.108045+00:00\", \"meta.ingest_time\": \"2023-06-08T12:00:30.028887+00:00\", \"meta.relevancy\": \"0.12\", \"meta.source_reliability\": \"A\", \"meta.tags\": \"\", \"meta.taxonomy\": \"\", \"meta.terms_of_use\": \"\", \"meta.tlp\": \"WHITE\", \"source.ids\": \"47ec245c-9e7b-467e-a016-77a22ff12dd5\", \"source.names\": \"Elemendar\", \"timestamp\": \"2023-06-20 18:06:08.590994+00:00\", \"type\": \"cve\", \"value\": \"2021-45105\", \"value_url\": \"https://test.com/main/extracts/cve/2021-45105\"}",
+                "original": "{\"calculated.relevancy\": \"0.12\", \"calculated.source_reliability\": \"A\", \"calculated.tlp\": \"WHITE\", \"diff\": \"del\", \"entity.id\": \"d983be9e-307c-4bdb-8bda-c3238fb22c6d\", \"entity.title\": \"CVE-2021-45105\", \"entity.type\": \"exploit-target\", \"meta.classification\": \"\", \"meta.confidence\": \"\", \"meta.entity_url\": \"https://test.com/entity/d983be9e-307c-4bdb-8bda-c3238fb22c6d\", \"meta.estimated_observed_time\": \"2021-12-19T00:27:19+00:00\", \"meta.estimated_threat_end_time\": \"\", \"meta.estimated_threat_start_time\": \"2021-12-19T00:27:19+00:00\", \"meta.ingest_time\": \"2023-06-08T12:00:30+00:00\", \"meta.relevancy\": \"0.12\", \"meta.source_reliability\": \"A\", \"meta.tags\": \"\", \"meta.taxonomy\": \"\", \"meta.terms_of_use\": \"\", \"meta.tlp\": \"WHITE\", \"source.ids\": \"47ec245c-9e7b-467e-a016-77a22ff12dd5\", \"source.names\": \"Elemendar\", \"timestamp\": \"2023-06-20 18:06:08+00:00\", \"type\": \"cve\", \"value\": \"2021-45105\", \"value_url\": \"https://test.com/main/extracts/cve/2021-45105\"}",
                 "provider": "Elemendar",
-                "start": "2021-12-19T00:27:19.108Z",
+                "start": "2021-12-19T00:27:19.000Z",
                 "type": [
                     "indicator"
                 ],

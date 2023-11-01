@@ -61,28 +61,36 @@ processors:
       target_field: event.created
       formats:
         - "yyyy-MM-dd HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd HH:mm:ssz"
         - "yyyy-MM-dd'T'HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd'T'HH:mm:ssz"
       if: "ctx.json.meta?.ingest_time != null && ctx.json.meta?.ingest_time != ''"
   - date:
       field: json.meta.estimated_threat_start_time
       target_field: event.start
       formats:
         - "yyyy-MM-dd HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd HH:mm:ssz"
         - "yyyy-MM-dd'T'HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd'T'HH:mm:ssz"
       if: "ctx.json.meta?.estimated_threat_start_time != null && ctx.json.meta?.estimated_threat_start_time != ''"
   - date:
       field: json.meta.estimated_threat_end_time
       target_field: event.end
       formats:
         - "yyyy-MM-dd HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd HH:mm:ssz"
         - "yyyy-MM-dd'T'HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd'T'HH:mm:ssz"
       if: "ctx.json.meta?.estimated_threat_end_time != null && ctx.json.meta?.estimated_threat_end_time != ''"
   - date:
       field: json.timestamp
       target_field: "@timestamp"
       formats:
         - "yyyy-MM-dd HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd HH:mm:ssz"
         - "yyyy-MM-dd'T'HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd'T'HH:mm:ssz"
   - split:
       field: json.meta.tags
       target_field: tags
@@ -99,6 +107,7 @@ processors:
       target_field: threat.indicator.first_seen
       formats:
         - "yyyy-MM-dd HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd HH:mm:ssz"
         - "yyyy-MM-dd'T'HH:mm:ss.SSSSSSz"
         - "yyyy-MM-dd'T'HH:mm:ssz"
       if: "ctx.json.meta?.estimated_observed_time != null && ctx.json.meta?.estimated_observed_time != ''"
@@ -322,7 +331,9 @@ processors:
       target_field: eclecticiq.outgoing_feed.deleted_at
       formats:
         - "yyyy-MM-dd HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd HH:mm:ssz"
         - "yyyy-MM-dd'T'HH:mm:ss.SSSSSSz"
+        - "yyyy-MM-dd'T'HH:mm:ssz"
       if: "ctx.json.diff == 'del'"
 
   # other
