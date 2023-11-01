@@ -38,6 +38,9 @@ for Elasticsearch to connect to it. See [Set up EclecticIQ Intelligence Center](
 For step-by-step instructions on how to set up an integration, see the
 [Getting started](https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-observability.html) guide.
 
+You must create one integration instance per
+EclecticIQ Intelligence Center outgoing feed
+you want to retrieve intelligence from.
 
 ### Set up EclecticIQ Intelligence Center
 
@@ -75,12 +78,41 @@ Only observables packed by this outgoing feed are fetched.
 > 1.  Navigate to **Data configuration > Outgoing feeds**.
 > 1.  Select an outgoing feed to open it.
 > 1.  Inspect the address bar of your browser.
-> 1.  The ID of this outgoing feed is the value of the `?detail=`
-    query parameter.
+> 1.  The ID of this outgoing feed is the
+>     value of the `?detail=` query parameter.
 >
->    For example: For an outgoing feed that displays `https://ic-playground.eclecticiq.com/main/configuration/outgoing-feeds?detail=6 `in the address bar, its ID is `6.`
+>    For example: For an outgoing feed that displays
+>    `https://ic-playground.eclecticiq.com/main/configuration/outgoing-feeds?detail=6`
+>    in the address bar, its ID is `6`.
 
-#### Example
+### Index name
+
+This integration retrieves and makes available the latest version of the
+threat intelligence retrieved from EclecticIQ Intelligence Center
+in the following index:
+`logs-ti_eclecticiq_latest.observables-1`
+
+When threat intelligence is deleted from datasets used by the configured
+outgoing feed, these are removed from that index.
+
+In the Intelligence dashboard, to see only the latest
+threat intelligence from EclecticIQ Intelligence Center,
+filter results with:
+
+```
+_index : logs-ti_eclecticiq_latest.observables-1 and threat.indicator.type : *
+```
+
+
+### Known issues
+
+Certain threat intelligence observables in the
+Elastic Indicator Intelligence dashboard are
+displayed with a `-`.
+That data is not displayed, but retained in the JSON 
+body of the event.
+
+## Example
 
 {{event "outgoing_feed"}}
 
